@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Accessors
+    public function getFullNameAttribute()
+    {
+        return $this->name . ' ' . $this->surname;
+    }
+
+    // Mutators to get current value and set it say to capital.
+    public function setNameAttribute($value)
+    {
+        $this->attribute['name'] = ucfirst($value);
+    }
 }
